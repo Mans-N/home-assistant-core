@@ -906,7 +906,7 @@ def _hass_to_hue_state(entity: State) -> bool:
 
 
 async def wait_for_state_change_or_timeout(
-    hass: core.HomeAssistant, entity_id: str, timeout: float
+    hass: core.HomeAssistant, entity_id: str, *args
 ) -> None:
     """Wait for an entity to change state."""
     ev = asyncio.Event()

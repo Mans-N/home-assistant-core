@@ -191,7 +191,6 @@ class XYPoint:
 class GamutType:
     """Represents the Gamut of a light."""
 
-    # ColorGamut = gamut(xypoint(xR,yR),xypoint(xG,yG),xypoint(xB,yB))
     red: XYPoint = attr.ib()
     green: XYPoint = attr.ib()
     blue: XYPoint = attr.ib()

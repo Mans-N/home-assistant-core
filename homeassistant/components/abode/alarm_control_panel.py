@@ -23,7 +23,7 @@ from .entity import AbodeDevice
 
 
 async def async_setup_entry(
-    hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback
+    hass: HomeAssistant, *args, async_add_entities: AddEntitiesCallback
 ) -> None:
     """Set up Abode alarm control panel device."""
     data: AbodeSystem = hass.data[DOMAIN]
