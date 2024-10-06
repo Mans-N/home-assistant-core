@@ -93,17 +93,21 @@ async def async_setup_entry(
     )
 
 
-def get_robot_state(state: dict[str, Any], robot_alert) -> str:
+def get_robot_state(state: dict[str, Any], robot_alert) -> tuple[str, str]:
     """Get the state of the robot."""
+    def isCharging():
+        return state["details"]["isCharging"]
+    def isDocked():
+        return state["details"]["isDocked"] and not state["details"]["isCharging"]
     attr_state = None
     status_state = None
     if state["state"] == 1:
         attr_state = STATE_IDLE
         status_state = "Stopped"
-        if state["details"]["isCharging"]:
+        if isCharging():
             attr_state = STATE_DOCKED
             status_state = "Charging"
-        elif state["details"]["isDocked"] and not state["details"]["isCharging"]:
+        elif isDocked():
             attr_state = STATE_DOCKED
             status_state = "Docked"
         if robot_alert is not None:
