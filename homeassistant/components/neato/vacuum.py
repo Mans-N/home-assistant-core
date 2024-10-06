@@ -105,10 +105,10 @@ def get_robot_state(state: dict[str, Any], robot_alert) -> tuple[str, str]:
     if state["state"] == 1:
         attr_state = STATE_IDLE
         status_state = "Stopped"
-        if is_charging():
+        if is_charging(state):
             attr_state = STATE_DOCKED
             status_state = "Charging"
-        elif is_docked():
+        elif is_docked(state):
             attr_state = STATE_DOCKED
             status_state = "Docked"
         if robot_alert is not None:
